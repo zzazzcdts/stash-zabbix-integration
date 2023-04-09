@@ -1,3 +1,3 @@
 # stash-zabbix-integration
-Get statistics for Stash instances within Zabbix
+Get statistics for Stash instances within Zabbix.
 
