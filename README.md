@@ -1,7 +1,7 @@
 # stash-zabbix-integration
 Get statistics for Stash instances within Zabbix.
 
-The Zabbix agent should be installed on the machine running Stash in order for this to work. This only works on Linux machines, and only Ubuntu 22.04 has been tested.
+The Zabbix agent should be installed on the machine running Stash in order for this to work. This only works on Linux machines, and only Ubuntu 22.04 has been tested. The code is probably a bloody mess, and I'm probably breaking quite a few cardinal sins with my approach, so be warned. I just wanted to share this in case it helps anybody out.
 
 # Install dependency command 'stashstat'
 'stashstat' is a very basic command that returns values from the Stash database based on the argument passed to it.
