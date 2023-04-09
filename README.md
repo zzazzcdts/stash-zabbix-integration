@@ -52,3 +52,5 @@ These steps have added new keys that can be used when creating new items within 
 | stash.statistics[withoutid] | The number of scenes present in the Stash database without a Stash ID set.  |
 | stash.statistics[organized] | The number of scenes present in the Stash database that are marked as 'organized'.  |
 | stash.statistics[unorganized] | The number of scenes present in the Stash database that are not marked as 'organized'.  |
+
+More information on how to add an item can be found here: https://www.zabbix.com/documentation/current/en/manual/config/items/item
