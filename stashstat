@@ -1,0 +1,30 @@
+#!/bin/bash
+STASHDBPATH="/home/user/stashapp/config/stash-go.sqlite"
+if [ $1 = "performer" ]; then
+		# Return performer count
+        sqlite3 "$STASHDBPATH" "SELECT COUNT(id) FROM performers;"
+elif [ $1 = "scene" ]; then
+		# Return scene count
+        sqlite3 "$STASHDBPATH" "SELECT COUNT(id) FROM scenes;"
+elif [ $1 = "studio" ]; then
+		# Return studio count
+        sqlite3 "$STASHDBPATH" "SELECT COUNT(id) FROM studios;"
+elif [ $1 = "withid" ]; then
+		# Return count of all scenes with a Stash ID set
+        sqlite3 "$STASHDBPATH" "SELECT COUNT(*) FROM (SELECT scenes.id FROM scenes LEFT JOIN scene_stash_ids ON scenes.id = scene_stash_ids.scene_id GROUP BY scenes.id HAVING COUNT(scene_stash_ids.scene_id) = 1) AS matches;"
+elif [ $1 = "withoutid" ]; then
+		# Return count of all scenes without a Stash ID set
+        totalscene=$(sqlite3 "$STASHDBPATH" "SELECT COUNT(id) FROM scenes;")
+        totalwithids=$(sqlite3 "$STASHDBPATH" "SELECT COUNT(*) FROM (SELECT scenes.id FROM scenes LEFT JOIN scene_stash_ids ON scenes.id = scene_stash_ids.scene_id GROUP BY scenes.id HAVING COUNT(scene_stash_ids.scene_id) = 1) AS matches;")
+        withoutid=$((totalscene - totalwithids))
+        echo $withoutid
+elif [ $1 = "organized" ]; then
+		# Return count of all scenes marked as organised
+        sqlite3 "$STASHDBPATH" "select count(id) from scenes WHERE organized = true;"
+elif [ $1 = "unorganized" ]; then
+		# Return count of all scenes not marked as organised
+        sqlite3 "$STASHDBPATH" "select count(id) from scenes WHERE organized = false;"
+else
+		# Return nothing if none of the above are specified
+        echo ""
+fi
