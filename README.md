@@ -40,3 +40,15 @@ Restart your Zabbix agent by running this command:
 
 (For Zabbix Agent 2)
 ```sudo systemctl restart zabbix-agent2```
+
+# New items in Zabbix
+These steps have added new keys that can be used when creating new items within Zabbix. These keys are as follows:
+| Key  | Returned value |
+| ------------- | ------------- |
+| stash.statistics[performer]  | The number of performers present in the Stash database.  |
+| stash.statistics[scene] | The number of scenes present in the Stash database.  |
+| stash.statistics[studio] | The number of studios present in the Stash database.  |
+| stash.statistics[withid] | The number of scenes present in the Stash database with a Stash ID set.  |
+| stash.statistics[withoutid] | The number of scenes present in the Stash database without a Stash ID set.  |
+| stash.statistics[organized] | The number of scenes present in the Stash database that are marked as 'organized'.  |
+| stash.statistics[unorganized] | The number of scenes present in the Stash database that are not marked as 'organized'.  |
